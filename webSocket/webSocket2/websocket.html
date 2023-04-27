@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+</head>
+<body>
+<h1>WebSocket Chat</h1>
+
+<div id="messages"></div>
+
+<form id="message-form">
+    <input type="text" id="user" placeholder="Enter your name" required>
+    <input type="text" id="message" placeholder="Enter your message" required>
+    <button type="submit">Send</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.11/signalr.min.js"></script>
+<script>
+    // Cria um objeto HubConnectionBuilder que se conecta ao endpoint /chatHub
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+    // Define o evento onReceiveMessage para receber as mensagens do chat
+    connection.on("ReceiveMessage", function (chatMessage) {
+        // Cria um elemento <p> para exibir a mensagem na página
+        var p = document.createElement("p");
+        p.textContent = chatMessage.user + ": " + chatMessage.message + " (" + chatMessage.date + ")";
+        document.getElementById("messages").appendChild(p);
+    });
+
+    // Inicia a conexão com o servidor WebSocket
+    connection.start().then(function () {
+        console.log("Connected to the chat server");
+    }).catch(function (err) {
+        console.error(err.toString());
+    });
+
+    // Obtém o formulário e os campos de entrada
+    var form = document.getElementById("message-form");
+    var user = document.getElementById("user");
+    var message = document.getElementById("message");
+
+    // Define o evento onSubmit do formulário para enviar as mensagens do chat
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        // Envia a mensagem para o servidor usando o método sendMessage
+        connection.invoke("SendMessage", user.value, message.value).catch(function (err) {
+            console.error(err.toString());
+        });
+        // Limpa o campo de mensagem
+        message.value = "";
+    });
+</script>
+</body>
+</html>

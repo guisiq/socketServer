@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\webSocket2.props" />
+</Project>
