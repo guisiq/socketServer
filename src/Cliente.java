@@ -67,7 +67,7 @@ public class Cliente {
 				while (true) {
 					try {							
 						String msg=dis.readUTF();
-						janela.escreverMensagens(msg);
+						janela.escreverMensagens(msg+"\n");
 					} catch (IOException e) {
 
 						e.printStackTrace();
