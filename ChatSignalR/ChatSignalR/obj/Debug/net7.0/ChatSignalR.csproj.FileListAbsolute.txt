@@ -1,4 +1,0 @@
-C:\Users\guilhermehsl\Documents\guilherme\socketServer (1)\socketServer\ChatSignalR\ChatSignalR\obj\Debug\net7.0\ChatSignalR.csproj.AssemblyReference.cache
-C:\Users\guilhermehsl\Documents\guilherme\socketServer (1)\socketServer\ChatSignalR\ChatSignalR\obj\Debug\net7.0\ChatSignalR.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\guilhermehsl\Documents\guilherme\socketServer (1)\socketServer\ChatSignalR\ChatSignalR\obj\Debug\net7.0\ChatSignalR.csproj.CoreCompileInputs.cache
-C:\Users\guilhermehsl\Documents\guilherme\socketServer (1)\socketServer\ChatSignalR\ChatSignalR\obj\Debug\net7.0\ChatSignalR.MvcApplicationPartsAssemblyInfo.cache
