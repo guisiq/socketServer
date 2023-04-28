@@ -93,8 +93,14 @@ public class Janela extends JFrame {
       
         btNome.addActionListener(new ActionListener() { // Adiciona um ActionListener ao botão
             public void actionPerformed(ActionEvent e) { // Define o método actionPerformed
-                mensagem  = campoNome.getText();
                 campoRemetente.setText("I");
+                mensagem  = campoNome.getText();
+            }
+          });
+        btDestinatario.addActionListener(new ActionListener() { // Adiciona um ActionListener ao botão
+            public void actionPerformed(ActionEvent e) { // Define o método actionPerformed
+                mensagem  ="_";
+                campoRemetente.setText("LIST");
             }
           });
         btEnviar.addActionListener(new ActionListener() { // Adiciona um ActionListener ao botão
