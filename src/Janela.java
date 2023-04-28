@@ -19,7 +19,7 @@ public class Janela extends JFrame {
     JTextArea   chat            = new JTextArea("");
     JButton     btEnviar        = new JButton("enviar"); // Cria um botão
     JButton     btRemetente     = new JButton("nome"); // Cria um botão
-    JButton     btLimpar        = new JButton("limpar"); // Cria um botão
+    JButton     btNome        = new JButton("nome"); // Cria um botão
     JTextField  campoChat       = new JTextField(10);
     JTextField  campoRemetente  = new JTextField(10);
     JTextField  campoNome  = new JTextField(10);
@@ -48,6 +48,13 @@ public class Janela extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         campoNome.setText("guilherme");
         add(campoNome,gbc);
+        gbc = new GridBagConstraints();
+        gbc.gridx = 3; // Define a coluna inicial do componente
+        gbc.gridy = 1; // Define a linha inicial do componente
+        gbc.weightx =  3; // Define o número de colunas que o componente ocupa
+        gbc.weighty =   0.1; // Define o número de linhas que o componente ocupa
+        gbc.fill = GridBagConstraints.BOTH;
+        add(btNome,gbc);
         gbc = new GridBagConstraints();
         gbc.gridx = 0; 
         gbc.gridy = 2; 
