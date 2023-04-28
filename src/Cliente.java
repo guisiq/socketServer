@@ -8,6 +8,8 @@ public class Cliente {
 
 	public static void main(String args[]) throws UnknownHostException, IOException 
 	{
+		
+		var janela = new Janela();
 		Scanner scn = new Scanner(System.in);
 		
 		InetAddress ip = InetAddress.getByName("localhost");
@@ -20,35 +22,37 @@ public class Cliente {
 		Thread sendMessageThread= new Thread(new Runnable(){
 			@Override
 			public void run() {
-				var janela = new Janela();
+				
 				var destinatario = "";
 				while (true) {
 
-					String msg= scn.nextLine();
-					
-					if (msg.contains("#")) {
-						StringTokenizer st = new StringTokenizer(msg, "#");
-						msg = st.nextToken();
-						destinatario = st.nextToken();
-						if(destinatario.equals("I")){
-							msg.toLowerCase().trim();
-						}else{
-							destinatario.toLowerCase().trim();
-						}
-					}
-					
-					try {
+					String msg = janela.campoRemetente.getText() + "#" +  janela.mensagem;
+					if (!janela.mensagem.equals("")) {
+
+							msg = janela.mensagem;
+							janela.mensagem ="";
+							destinatario = janela.campoRemetente.getText();
+							if (destinatario.equals("I")) {
+								msg.toLowerCase().trim();
+							} else {
+								destinatario.toLowerCase().trim();
+							}
 						
-						if (msg.toLowerCase().trim().equals("logout")) {
-							dos.writeUTF(msg);
-							scn.close();
-							s.close();
-							System.exit(1);
-						}else{
-							dos.writeUTF(msg+"#"+destinatario);
+
+						try {
+
+							if (msg.toLowerCase().trim().equals("logout")) {
+								dos.writeUTF(msg);
+								scn.close();
+								s.close();
+								System.exit(1);
+							} else {
+								dos.writeUTF(msg + "#" + destinatario);
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
 						}
-					} catch (IOException e) {
-						e.printStackTrace();
+
 					}
 				}
 			}
@@ -63,7 +67,7 @@ public class Cliente {
 				while (true) {
 					try {							
 						String msg=dis.readUTF();
-						System.out.println(msg);
+						janela.escreverMensagens(msg);
 					} catch (IOException e) {
 
 						e.printStackTrace();
