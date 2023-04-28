@@ -17,8 +17,7 @@ namespace webSocket2
             }
             app.UseExceptionHandler("/error");
             app.UseRouting(); // adicione esta linha
-            app.UseAuthorization();
-            app.UseAuthentication();
+
 
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             // Adiciona o middleware do SignalR
@@ -32,8 +31,6 @@ namespace webSocket2
         {
             services.AddSignalR();
             services.AddControllers();
-            services.AddAutoMapper(typeof(Startup));
-
             services.AddAuthorization(); // adicione esta linha
         }
     }

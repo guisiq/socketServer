@@ -1,4 +1,4 @@
-<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.11/signalr.min.js"></script>
 <script>
     // Cria um objeto HubConnectionBuilder que se conecta ao endpoint /chatHub
-    var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+    var connection = new signalR.HubConnectionBuilder().withUrl(" http://localhost:5000/chatHub").build();
+    console.log("🚀 ~ file: websocket.html:23 ~ connection:", connection)
 
     // Define o evento onReceiveMessage para receber as mensagens do chat
     connection.on("ReceiveMessage", function (chatMessage) {
